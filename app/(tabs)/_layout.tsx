@@ -10,7 +10,7 @@ const TabIcon = ({focused,icon,title}:any) =>{
         <ImageBackground
           source={images.highlight}
           className="flex flex-row flex-1
-          w-full min-w-[112] min-h-16 mt-4 justify-center items-center
+          w-full min-w-[112] min-h-16 mt-3 justify-center items-center
           rounded-full overflow-hidden"
         >
           <Image
@@ -27,7 +27,7 @@ const TabIcon = ({focused,icon,title}:any) =>{
 
     return (
       <View 
-        className="size-full justify-center items-center mt-4 rounded-full"
+        className="size-full justify-center items-center mt-3 rounded-full"
       >
         <Image
           source={icon}
@@ -54,7 +54,10 @@ const _layout = () => {
           marginHorizontal:10,
           borderRadius:50,
           marginBottom:24,
-          overflow:'hidden'
+          overflow:'hidden',
+          position:'absolute',
+          borderWidth:1,
+          borderColor:'#0f0d23'
         }
       }}
     >
