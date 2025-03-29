@@ -21,6 +21,7 @@ export default function Index(){
       <Image
         source={images.bg}
         className='absolute w-full z-0'
+        resizeMode="cover"
       />
       <ScrollView 
         className="flex-1 px-5"
@@ -44,7 +45,7 @@ export default function Index(){
         ) : moviesError ? (
           <Text className="text-lg text-white font-bold mt-5 mb-3">Error:{moviesError?.message}</Text>
         ) : (
-          <View>
+          <View className="flex-1 mt-5">
             <SearchBar
               onPress={()=> router.push('/search')}
               placeholder="Search for movie "
@@ -57,11 +58,12 @@ export default function Index(){
 
               <FlatList 
                 data={movies}
-                renderItem={({item})=>(
+                renderItem={({item})=>
                   <MovieCard 
                     {...item}
                   />
-                )}
+                  
+                }
                 keyExtractor={(item)=>item.id.toString()}
                 numColumns={3}
                 columnWrapperStyle={{
