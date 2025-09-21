@@ -8,8 +8,10 @@ import { fetchMovies } from '@/services/api'
 import { icons } from '@/constants/icons'
 import SearchBar from '@/components/SearchBar'
 import { updateSearchCount } from '@/services/appwrite'
+import { useTranslation } from 'react-i18next';
 
 const Search = () => {
+  const {t} = useTranslation()
   const [searchQuery,setSearchQuery]=useState('');
   const {data:movies,
     loading:moviesLoading,
@@ -72,7 +74,7 @@ const Search = () => {
             {!moviesLoading && !moviesError ? (
               <View className="mt-10 px-5">
                 <Text className="text-center text-gray-500">
-                  {searchQuery.trim() ? "No movies found" : "Search for movie"}
+                  {searchQuery.trim() ? "No movies found" : t('search')}
                 </Text>
               </View>
             ) : null}
@@ -89,7 +91,7 @@ const Search = () => {
 
           <View className="my-5">
             <SearchBar 
-            placeholder="Search movies ..."
+            placeholder={t('search')}
             value={searchQuery}
             onChangeText={(text:string)=>setSearchQuery(text)}
             />

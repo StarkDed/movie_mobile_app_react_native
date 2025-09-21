@@ -8,9 +8,11 @@ import { fetchMovies } from "@/services/api"
 import MovieCard from "@/components/MovieCard"
 import { getTrendingMovies } from "@/services/appwrite"
 import TrendingCard from '@/components/TrendingCard'
+import { useTranslation } from 'react-i18next';
 
 export default function Index(){
   const router = useRouter()
+  const { t } = useTranslation();
 
   const {
     data:trendingMovie,
@@ -57,13 +59,13 @@ export default function Index(){
           <View className="flex-1 mt-5">
             <SearchBar
               onPress={()=> router.push('/search')}
-              placeholder="Search for movie "
+              placeholder={t('search')}
 
             />  
 
             {trendingMovie && (
               <View className="mt-10">
-                <Text className="text-lg text-white font-bold mb-3">Trending Movies</Text>
+                <Text className="text-lg text-white font-bold mb-3">{t('trendingMovies')}</Text>
               </View>
             )}
             
@@ -78,7 +80,7 @@ export default function Index(){
                 keyExtractor={(item)=>item.movie_id.toString()}
               />
 
-              <Text className="text-lg text-white font-bold mt-5 mb-3">Latest movie</Text>
+              <Text className="text-lg text-white font-bold mt-5 mb-3">{t('latestMovie')}</Text>
 
               <FlatList 
                 data={movies}
